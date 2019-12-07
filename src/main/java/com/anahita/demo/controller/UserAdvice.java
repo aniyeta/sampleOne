@@ -15,6 +15,7 @@ public class UserAdvice {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorResponse> doSomething(Exception e) {
+
         log.error("User with id {} is not found",e.getMessage());
         return new ResponseEntity<ErrorResponse>(new ErrorResponse("User with id "+e.getMessage()+" is not found"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
